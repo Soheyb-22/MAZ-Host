@@ -24,7 +24,7 @@ window.lang = {
         "note2": "请等待缓存过程完整结束，以获得更好的稳定性",
         "note3": "越狱可能需要多次尝试才能成功"
     },
-    "secondHostBtn": "通过 GoldHEN 的 PayLoader 加载 Payload - 外部链接",
+    "secondHostBtn": "使用 GoldHEN 的 PayLoader 加载 payload - http 链接",
     "alert": "重要提示",
     "waitingUserInput": "等待用户操作",
     "cache": "正在安装缓存：",

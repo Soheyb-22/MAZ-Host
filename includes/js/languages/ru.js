@@ -18,7 +18,7 @@ window.lang = {
     "ps4FirmwareSupportedHeader": "Поддерживаемые версии ПО",
     "bareboneJB": "Режим только джейлбрейк",
     "languageHeader": "Язык",
-    "secondHostBtn": "Запуск payload'ов с помощью PayLoader'а встроенного в GoldHEN - Внешняя ссылка",
+    "secondHostBtn": "Загрузить payload'ы через GoldHEN PayLoader - http ссылка",
     "waitingUserInput": "Ожидание действия",
     "cache": "Установка оффлайн кэша: ",
     "ghVer": "Версия GoldHEN",

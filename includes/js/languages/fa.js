@@ -18,7 +18,7 @@ window.lang = {
     "ps4FirmwareSupportedHeader": "فریمورهای پشتیبانی‌شده PS4",
     "bareboneJB": "تجربه جیلبریک ساده",
     "languageHeader": "زبان",
-    "secondHostBtn": "بارگذاری پیلودها با استفاده از PayLoader گلدهن - لینک خارجی",
+    "secondHostBtn": "بارگذاری پیلودها با استفاده از PayLoader گلدهن - لینک http",
     "alert": "اطلاعیه مهم",
     "waitingUserInput": "در انتظار اقدام کاربر",
     "cache": "در حال نصب کش: ",

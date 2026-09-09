@@ -17,7 +17,7 @@ window.lang = {
     "settingsPsfreeHeader": "Ayarlar",
     "ps4FirmwareSupportedHeader": "Desteklenen PS4 Firmware sürümleri",
     "languageHeader": "Dil",
-    "secondHostBtn": "GoldHEN PayLoader ile payload yükleme – Harici bağlantı",
+    "secondHostBtn": "GoldHEN PayLoader kullanarak payloadları yükle - http linki",
     "waitingUserInput": "Kullanıcıdan yanıt bekleniyor",
     "cache": "Önbellek yükleniyor: ",
     "ghVer": "GoldHEN Versiyonları",

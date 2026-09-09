@@ -19,7 +19,7 @@ window.lang = {
     "ps4FirmwareSupportedHeader": "Supported PS4 firmware",
     "bareboneJB": "Barebone Jailbreak Experience",
     "languageHeader": "Language",
-    "secondHostBtn": "Load payloads using GoldHEN's PayLoader - External link",
+    "secondHostBtn": "Load payloads using GoldHEN's PayLoader - http link",
     "waitingUserInput": "Waiting for user action",
     "cache": "Installing Cache: ",
     "ghVer": "GoldHEN Versions",

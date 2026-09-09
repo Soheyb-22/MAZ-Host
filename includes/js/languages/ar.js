@@ -19,7 +19,7 @@ window.lang = {
   "ps4FirmwareSupportedHeader": "إصدارات PS4 المدعومة",
   "bareboneJB":  "تجربة تعديل خام",
   "languageHeader": "اللغة",
-  "secondHostBtn": "تنفيذ التعديلات بإستخدام خادم GoldHEN - رابط خارجي",
+  "secondHostBtn": "تنفيذ التعديلات بإستخدام خادم GoldHEN - رابط http",
   "waitingUserInput": "في انتظار الأوامر من المستخدم",
   "cache": "جاري تحميل الموقع في ذاكرة التخزين المحلية:  ",
   "ghVer" : "إصدارات GoldHEN",

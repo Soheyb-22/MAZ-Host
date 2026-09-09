@@ -17,7 +17,7 @@ window.lang = {
     "settingsPsfreeHeader": "Ajustes",
     "ps4FirmwareSupportedHeader": "Firmware de PS4 soportado",
     "languageHeader": "Idioma",
-    "secondHostBtn": "Cargar payloads usando GoldHEN's PayLoader - Link Externo",
+    "secondHostBtn": "Cargar payloads usando GoldHEN's PayLoader - Link http",
     "waitingUserInput": "Esperando accion del usuario",
     "cache": "Instalando Cache: ",
     "ghVer": "Versiones de GoldHEN",
