@@ -100,6 +100,7 @@ function applyLanguage(lang) {
         var aboutParagraphs = ui.aboutPopup.querySelectorAll('p');
         if (aboutParagraphs.length > 0) updateText(aboutParagraphs[0], 'aboutVersion');
         if (aboutParagraphs.length > 1) updateText(aboutParagraphs[1], 'aboutDescription');
+        if (aboutParagraphs.length > 2) updateText(aboutParagraphs[2], 'hostedOn')
         updateText(ui.aboutPopup.querySelector('#PS4FWOK h3'), 'ps4FirmwareSupportedHeader');
         ui.aboutPopup.querySelector('#listfw').style.direction = rtlLangs.includes(user.currentLanguage) ? 'ltr' : 'ltr';
         ui.aboutPopup.querySelector('#listfw').style.justifyContent = rtlLangs.includes(user.currentLanguage) ? 'end' : 'start';

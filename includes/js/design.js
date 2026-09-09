@@ -41,7 +41,11 @@ function loadTheme() {
 
     if (radioElement.value == "compact") {
         ui.initialScreen.classList.add('compact');
-    } else ui.initialScreen.classList.remove('compact');
+        ui.clickToStartText.textContent = projectName;
+    } else{
+        ui.initialScreen.classList.remove('compact');
+        ui.clickToStartText.textContent = window.lang.clickToStart;
+    }
     // Update the UI radio button if it exists
     if (radioElement) {
         radioElement.checked = true;

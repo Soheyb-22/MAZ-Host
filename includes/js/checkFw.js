@@ -1,5 +1,5 @@
 function isLocalIP(ip) {
-  return /^(127\.|192\.168\.|10\.|172\.(1[6-9]|2[0-9]|3[0-1])\.)/.test(ip);
+    return /^(127\.|192\.168\.|10\.|172\.(1[6-9]|2[0-9]|3[0-1])\.)/.test(ip);
 }
 
 function getPs4FwVersion(ua) {
@@ -12,6 +12,7 @@ function CheckFW() {
     var userAgent = navigator.userAgent;
     var ps4Regex = /PlayStation 4/;
     var fwVersion = getPs4FwVersion(userAgent);
+    var isLocalServer = isLocalIP(window.location.hostname) || window.location.hostname == "localhost";
 
     var elementsToHide = [
         'ps-logo-container', 'choosejb-initial', 'exploit-main-screen', 'scrollDown',
@@ -55,7 +56,7 @@ function CheckFW() {
                 }
             } else {
                 var toRemove = ['exploit-main-screen', 'scrollDown', 'advancedPayloads'];
-                elementsToHide = elementsToHide.filter(function(e) {
+                elementsToHide = elementsToHide.filter(function (e) {
                     return toRemove.indexOf(e) === -1;
                 });
                 elementsToHide.push('initial-screen', 'exploit-status-panel', 'henSelection', 'autoJbContainer', 'successRate', 'bareboneJBOption', 'chooseExploitChain');
@@ -67,7 +68,7 @@ function CheckFW() {
                 document.getElementById('header2').classList.remove('hidden');
             }
 
-            elementsToHide.forEach(function(id) {
+            elementsToHide.forEach(function (id) {
                 var el = document.getElementById(id);
                 if (el) el.style.display = 'none';
             });
@@ -84,7 +85,7 @@ function CheckFW() {
         // For user selected firmware
         if (user.ps4Fw) ui.ps4FwSelect.value = user.ps4Fw;
         // Show only if on a local server
-        if ((isLocalIP(window.location.hostname) || window.location.hostname == "localhost") && !devMode) {
+        if (isLocalServer && !devMode) {
             // Show IP input and firmware selector for local server users on smart devices
             ui.ps4IpInput.classList.remove('hidden');
             ui.ps4FwSelect.classList.remove('hidden');
@@ -94,7 +95,7 @@ function CheckFW() {
             ui.ps4IpInput.value = user.ip;
 
             var toRemove2 = ['exploit-main-screen', 'scrollDown', 'advancedPayloads', 'custom-tab'];
-            elementsToHide = elementsToHide.filter(function(e) {
+            elementsToHide = elementsToHide.filter(function (e) {
                 return toRemove2.indexOf(e) === -1;
             });
             elementsToHide.push('initial-screen', 'henSelection', 'autoJbContainer', 'successRate', 'bareboneJBOption', 'chooseExploitChain', 'layouts', 'theme');
@@ -114,41 +115,38 @@ function CheckFW() {
             // Moving the settings icon to a better place
             document.getElementById('header2').classList.remove('hidden', 'left-6');
             document.getElementById('header2').classList.add('flex', 'inherit');
-            
+
+            // add borders to buttons in header2
             var buttons = document.getElementById('header2').querySelectorAll('button');
             for (var i = 0; i < buttons.length; i++) {
                 buttons[i].classList.add('border', 'border-white/20', 'rounded-xl');
             }
-        } else {
-            elementsToHide.push('layout', 'layouts', "updateCache", "settings-btn");
+            // Hide elements for local server users unless in dev mode
+            if (!devMode) {
+                elementsToHide.forEach(function (id) {
+                    var el = document.getElementById(id);
+                    if (el) el.style.display = 'none';
+                });
+            }
         }
         ui.ps4FwStatus.style.color = 'red';
-        document.getElementById('PS4FW').style.width = "100%";
-        document.getElementById('PS4FW').style.textAlign = "center";
-
-        // Hide elements for non supported devices unless in dev mode
-        if (!devMode) {
-            elementsToHide.forEach(function(id) {
-                var el = document.getElementById(id);
-                if (el) el.style.display = 'none';
-            });
-        }
+        ui.ps4FwStatus.style.textAlign = "center";
     }
 }
 
-function firstTimeExploitChain(fwVersion){
+function firstTimeExploitChain(fwVersion) {
     const currentExploitChain = localStorage.getItem('exploitChain');
     if (currentExploitChain != null && !isNaN(currentExploitChain)) return;
     var fwNum = parseFloat(fwVersion);
     var chain = 4; // Default to CSSFontFace Lapse
-    if (fwNum >= 6.70 && fwNum <= 6.72){
+    if (fwNum >= 6.70 && fwNum <= 6.72) {
         chain = 2; // BadHoist
     }
     else if (fwNum >= 7.00 && fwNum <= 9.60) {
         chain = 1; // Bundle PSFree Lapse
-    }else if (fwNum >= 11.50 && fwNum <= 12.02) {
+    } else if (fwNum >= 11.50 && fwNum <= 12.02) {
         chain = 5; // SlopKit lapse
-    }else if (fwNum >= 12.50 && fwNum <= webKitMax) {
+    } else if (fwNum >= 12.50 && fwNum <= webKitMax) {
         chain = 6; // SlopKit Netctrl
     }
     exploitChain(chain);

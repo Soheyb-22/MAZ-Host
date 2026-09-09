@@ -68,7 +68,7 @@ input[type="radio"] {
 
 /* Scrollbar design */
 ::-webkit-scrollbar {
-    width: 10px;
+    width: 6px;
 }
 
 

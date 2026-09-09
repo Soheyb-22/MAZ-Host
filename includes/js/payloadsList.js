@@ -102,7 +102,7 @@ const payloadsList = [
     id: "DBRebuilder",
     name: "DB-Rebuilder",
     author: "4GAMER",
-    description: "Rebuilds the PS4's databases, fixing corrupted data.",
+    description: "Rebuilds the PS4's FPKG database, bringing homebrew icons back to the home screen.",
     specificFW: "",
     category: "tools",
     funcName: "load_DBRebuilder"

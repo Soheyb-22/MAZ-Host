@@ -54,7 +54,6 @@ function findPs4FromBaseIP(ip) {
         function onDone() {
             checked++;
             if (checked === total && !found) {
-                reject(new Error('BinLoader not found on subnet'));
                 alert(window.lang.payLoaderNotFound);
             }
         }

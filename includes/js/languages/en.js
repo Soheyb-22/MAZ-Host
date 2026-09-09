@@ -13,6 +13,7 @@ window.lang = {
     "payloadsLinuxHeader": "Linux",
     "aboutVersion": "Version: 2.0",
     "aboutDescription": "A feature rich web interface to jailbreak your PS4.",
+    "hostedOn": "Hosted on GitHub",
     "closeButton": "Close",
     "settingsPsfreeHeader": "Settings",
     "ps4FirmwareSupportedHeader": "Supported PS4 firmware",

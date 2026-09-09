@@ -13,6 +13,7 @@ window.lang = {
   "payloadsLinuxHeader": "لينكس",
   "aboutVersion": "الإصدار: 2.0",
   "aboutDescription": "واجهة ويب غنية بالمميزات لتعديل البلايستايشن 4",
+  "hostedOn": "مستضاف على GitHub",
   "closeButton": "إغلاق",
   "settingsPsfreeHeader": "الإعدادات",
   "ps4FirmwareSupportedHeader": "إصدارات PS4 المدعومة",
