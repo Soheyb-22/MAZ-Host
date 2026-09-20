@@ -240,6 +240,10 @@ function load_WebSrv(name) {
     Loadpayloadlocal("./includes/payloads/Bins/ps4-websrv.bin", name);
 }
 
+function load_ps4SouthbridgeDetector(name) {
+    Loadpayloadlocal("./includes/payloads/Bins/ps4-southbridge-detector.bin", name);
+}
+
 // Custom uploaded Payload
 function custom(payloadFile) {
     if (!payloadFile) {

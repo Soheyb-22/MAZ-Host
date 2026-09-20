@@ -45,6 +45,15 @@ const payloadsList = [
     funcName: "load_DisableUpdates"
   },
   {
+    id: "DetectSouthbridge",
+    name: "Detect-Southbridge",
+    author: "ArabPixel",
+    description: "Detects your PS4's Southbridge. Useful for setting up PS4 Linux.",
+    specificFW: "",
+    category: "tools",
+    funcName: "load_ps4SouthbridgeDetector"
+  },
+  {
     id: "FanThreshold",
     name: "Fan-Threshold",
     author: "Scene Collective",
