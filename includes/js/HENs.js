@@ -3,6 +3,9 @@ function GoldHEN() {
     var goldHenVersion = localStorage.getItem('GHVer');
     var basePath = "./includes/payloads/GoldHEN/";
     switch (goldHenVersion) {
+        case "GHv2.4b18.10":
+            sessionStorage.setItem('payload_path', basePath + "goldhen_v2.4b18.10.bin");
+            break;
         case "GHv2.4b18.9":
             sessionStorage.setItem('payload_path', basePath + "goldhen_v2.4b18.9.bin");
             break;
@@ -15,11 +18,8 @@ function GoldHEN() {
         case "GHv2.4b18.6":
             sessionStorage.setItem('payload_path', basePath + "goldhen_v2.4b18.6.bin");
             break;
-        case "GHv2.4b18.5":
-            sessionStorage.setItem('payload_path', basePath + "goldhen_v2.4b18.5.bin");
-            break;
         default:
-            sessionStorage.setItem('payload_path', basePath + "goldhen_v2.4b18.10.bin");
+            sessionStorage.setItem('payload_path', basePath + "goldhen_v2.4b18.11.bin");
             break;
     }
 }
@@ -39,7 +39,7 @@ function setGoldHENVer(value) {
 }
 
 function loadGoldHENVer() {
-    const goldHenVer = localStorage.getItem("GHVer") || "GHv2.4b18.10";
+    const goldHenVer = localStorage.getItem("GHVer") || "GHv2.4b18.11";
     const goldHenRadio = document.querySelector(`input[name="goldhen"][value="${goldHenVer}"]`);
     if (goldHenRadio) goldHenRadio.checked = true;
 }

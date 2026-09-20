@@ -11,7 +11,7 @@ function getPs4FwVersion(ua) {
 // Hide GoldHEN radio when its unsupported
 function updateHenFlavorVisibility(fwVersion) {
     var fwNum = parseFloat(fwVersion);
-    var hideGoldHEN = fwNum > 13.00 ? true : false;
+    var hideGoldHEN = (fwNum > 13.00 && fwNum !== 13.52) ? true : false;
     if (isNaN(fwNum)) return;
 
     const goldHenInputInitial = document.getElementById('goldhen-label-initial');

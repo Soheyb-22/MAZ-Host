@@ -169,7 +169,7 @@
                     <div id="henSelection" class="flex items-center justify-center gap-4">
                         <label
                             class="flex items-center px-2 py-1 rounded bg-gray-700/60 hover:bg-gray-700 cursor-pointer shadow border-2 border-transparent focus-within:border-blue-500" id="goldhen-label-exploit">
-                            <input type="radio" name="hen" value="GoldHEN" class="accent-blue-500 w-4 h-4 ml-2"
+                            <input type="radio" name="hen2" value="GoldHEN" class="accent-blue-500 w-4 h-4 ml-2"
                                 onchange="saveJbFlavor(this.name, this.value)">
                             <span class="text-base font-semibold text-white/90 select-none">GoldHEN</span>
                         </label>
@@ -432,12 +432,17 @@
                 <h3 class="text-lg font-semibold mb-2" id="ghVer">GoldHEN versions</h3>
                 <div class="radio-group space-y-2">
                     <label class="flex items-center text-white/80">
-                        <input type="radio" name="goldhen" value="GHv2.4b18.10" onchange="setGoldHENVer(this.value);">
-                        <p>GoldHEN v2.4b18.10 - </p>
+                        <input type="radio" name="goldhen" value="GHv2.4b18.11" onchange="setGoldHENVer(this.value);">
+                        <p>GoldHEN v2.4b18.11 - </p>
                         <pre id="latestVer"> Latest</pre>
                     </label>
                     <details>
                         <summary>Other versions</summary>
+                        <label class="flex items-center text-white/80">
+                            <input type="radio" name="goldhen" value="GHv2.4b18.10"
+                                onchange="setGoldHENVer(this.value);">
+                            <p>GoldHEN v2.4b18.10</p>
+                        </label>
                         <label class="flex items-center text-white/80">
                             <input type="radio" name="goldhen" value="GHv2.4b18.9"
                                 onchange="setGoldHENVer(this.value);">
@@ -457,11 +462,6 @@
                             <input type="radio" name="goldhen" value="GHv2.4b18.6"
                                 onchange="setGoldHENVer(this.value);">
                             <p>GoldHEN v2.4b18.6</p>
-                        </label>
-                        <label class="flex items-center text-white/80">
-                            <input type="radio" name="goldhen" value="GHv2.4b18.5"
-                                onchange="setGoldHENVer(this.value);">
-                            <p>GoldHEN v2.4b18.5</p>
                         </label>
                     </details>
                 </div>
