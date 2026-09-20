@@ -176,8 +176,12 @@ function firstTimeExploitChain(fwVersion) {
     } else if (fwNum >= 12.50 && fwNum < 13.02) {
         chain = 6; // SlopKit Netctrl
     }
-    exploitChain(chain);
-    loadExploitChain();
+    if (typeof exploitChain === 'function') {
+        exploitChain(chain);
+    }
+    if (typeof loadExploitChain === 'function') {
+        loadExploitChain();
+    }
 }
 
 function toggleVisibility(id, show) {
