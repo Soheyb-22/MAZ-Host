@@ -57,4 +57,10 @@ window.lang = {
 	"exploitChainTitle": "Metodo de Exploit",
     "modularLapse": "PSFree Lapse modular",
     "bundleLapse": "PSFree Lapse bundle",
+    "themeSettingsHeader": "Personalización",
+    "updateCache": "Actualizar Cache",
+    "catppuccino": "Catppuccino",
+    "jailbreakSuccess": "¡Jailbreak exitoso!",
+    "alreadyJailbroken": "Ya se ha hecho jailbreak ...",
+    "reloadAfterJbText": "Recargar después de un jailbreak exitoso"
 }

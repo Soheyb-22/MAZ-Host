@@ -19,7 +19,7 @@ var devMode = false;   // Dev mode for PC debugging
 var rtlLangs = ["ar", "fa"];
 
 const webKitMin = 6.70;
-const webKitMax = 13.00;
+const webKitMax = 13.52;
 const projectName = "WebKitty";
 
 const ui = {
@@ -40,6 +40,7 @@ const ui = {
 
   // Exploit screen elements
   consoleElement: document.getElementById('console'),
+  exploitState: document.getElementById('state'),
   toolsSection: document.getElementById('tools'),
   toolsTab: document.getElementById('tools-tab'),
   linuxSection: document.getElementById('linux'),
@@ -129,6 +130,9 @@ async function jailbreak() {
     case 5: // slopkit lapse
     case 6: // slopkit netctrl
       slopKit();
+      break;
+    case 7: // relapse (13.02 - 13.52)
+      relapseJailbreak();
       break;
     default:
       log("Error: Invalid exploit chain selected", "red");
@@ -223,10 +227,18 @@ async function slopKit() {
       await getScript("src/slopkit/chain_lapse.js", true);
     }
   } catch (error) {
-    log(error)
-    alert(error)
+    log(error);
   }
 
+}
+
+async function relapseJailbreak() {
+  log("Loading Raw Game's Relapse exploit chain implementation..");
+  try {
+    await getScript("src/relapse/jb.js", true);
+  } catch (error) {
+    log(error);
+  }
 }
 
 // Apply lanuage after loading the language file
@@ -252,6 +264,7 @@ async function loadSettings() {
     loadAdvancedPayloads();
     loadLastTab();
     loadGoldHENVer();
+    getReloadAfterJb();
     autoJailbreak();
     updateBareboneJB();
     loadExploitChain();

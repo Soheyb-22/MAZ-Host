@@ -48,7 +48,7 @@ window.lang = {
   "failedToSendToPayLoader": "فشل في إرسال {payload} إلى PayLoader في ",
   "payloadSentToPayLoader": "{payload} تم إرساله إلى PayLoader في ",
   "customPayloadLoaded": "تم رفع الإضافة الخاصة بك: ",
-  "layout": "التصميم",
+  "layouts": "التصميم",
   "defaultTheme": "الإفتراضي",
   "compactTheme": "مُدمَج",
   "vibrantColor": "مشرق",
@@ -65,4 +65,7 @@ window.lang = {
   "themeSettingsHeader": "التخصيص",
   "updateCache": "تحديث الكاش",
   "catppuccino": "كابتشينو قطط",
+  "jailbreakSuccess": "تم التعديل بنجاح!",
+  "alreadyJailbroken": "تم التعديل مسبقاً ...",
+  "reloadAfterJbText": "إعادة تحميل الصفحة بعد عملية التعديل",
 }

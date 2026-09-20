@@ -73,11 +73,17 @@ function updateJbStats(attempt, isSuccess) {
     }
 }
 
-function jailbreakSuccess() {
+function jailbreakSuccess(statusMessage) {
     if (sessionStorage.getItem('jailbreakNow') == "true") {
         sessionStorage.removeItem('jailbreakNow');
     }
     sessionStorage.setItem('autoJbRetry', 'false');
     updateJbStats(0, 1);
-    setTimeout(() => { window.location.href = "./"; }, 5000);
+    if (getReloadAfterJb()) {
+        setTimeout(() => { window.location.href = "./"; }, 5000);
+    }
+
+    if (typeof ui !== 'undefined' && ui.exploitState) {
+        ui.exploitState.textContent = statusMessage || (window.lang && window.lang.jailbreakSuccess) || 'Jailbreak successful!';
+    }
 }

@@ -129,6 +129,7 @@ function applyLanguage(lang) {
         updateText(ui.settingsPopup.querySelector('#latestVer'), 'latestVer');
         updateText(ui.settingsPopup.querySelector('#scanPayLoader'), 'scanPayLoader');
         updateText(ui.settingsPopup.querySelector('#shutdownServerBtn'), 'shutdownServerBtn');
+        updateText(ui.settingsPopup.querySelector('#reloadAfterJbText'), 'reloadAfterJbText');
     }
 
     if (ui.themePopup) {

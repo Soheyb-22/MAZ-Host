@@ -65,4 +65,7 @@ window.lang = {
     "themeSettingsHeader": "Customization",
     "updateCache": "Update Cache",
     "catppuccino": "Catppuccino",
+    "jailbreakSuccess": "Jailbreak successful!",
+    "alreadyJailbroken": "Already Jailbroken ...",
+    "reloadAfterJbText": "Reload after a successful jailbreak",
 }

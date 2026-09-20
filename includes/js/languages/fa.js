@@ -62,5 +62,11 @@ window.lang = {
 
     "exploitChainTitle": "زنجیره اکسپلویت",
     "modularLapse": "PSFree Lapse پیش‌فرض",
-    "bundleLapse": "PSFree Lapse bundle"
+    "bundleLapse": "PSFree Lapse bundle",
+    "themeSettingsHeader": "شخصی‌سازی",
+    "updateCache": "به‌روزرسانی کش",
+    "catppuccino": "Catppuccino",
+    "jailbreakSuccess": "جیلبریک با موفقیت انجام شد!",
+    "alreadyJailbroken": "قبلاً جیلبریک شده است ...",
+    "reloadAfterJbText": "بارگذاری مجدد پس از جیلبریک موفق",
 }

@@ -15,7 +15,7 @@
     <meta property="og:type" content="website">
     <meta property="og:title" content="WebKitty">
     <meta property="og:description"
-        content="WebKitty is a user-friendly, feature-rich PS4 exploit host for 6.70 - 13.00.">
+        content="WebKitty is a user-friendly, feature-rich PS4 exploit host for 6.70 - 13.52.">
     <meta property="og:image" content="http://webkitty.arabpixel.net/includes/assets/icons/webkitty.svg">
     <meta property="og:url" content="http://webkitty.arabpixel.net">
 
@@ -23,7 +23,7 @@
     <meta name="twitter:card" content="summary">
     <meta name="twitter:title" content="WebKitty">
     <meta name="twitter:description"
-        content="WebKitty is a user-friendly, feature-rich PS4 exploit host for 6.70 - 13.00.">
+        content="WebKitty is a user-friendly, feature-rich PS4 exploit host for 6.70 - 13.52.">
     <meta name="twitter:image" content="http://webkitty.arabpixel.net/includes/assets/icons/webkitty.svg">
     <link rel="icon" href="includes/assets/icons/favicon.ico" type="image/x-icon">
     <link rel="stylesheet" id="main-stylesheet" href="">
@@ -124,7 +124,7 @@
                 <h3 class="text-xl font-semibold mb-4">Choose your HEN flavor</h3>
                 <div class="flex flex-col sm:flex-row justify-center gap-4 sm:gap-8 rtl:gap-4 sm:rtl:gap-8">
                     <label
-                        class="flex items-center px-4 py-2 rounded-lg bg-gray-700/60 hover:bg-gray-700 transition-colors cursor-pointer shadow border-2 border-transparent focus-within:border-blue-500 w-full sm:w-auto mb-2 sm:mb-0">
+                        class="flex items-center px-4 py-2 rounded-lg bg-gray-700/60 hover:bg-gray-700 transition-colors cursor-pointer shadow border-2 border-transparent focus-within:border-blue-500 w-full sm:w-auto mb-2 sm:mb-0" id="goldhen-label-initial">
                         <input type="radio" name="hen" value="GoldHEN" onchange="saveJbFlavor(this.name, this.value)"
                             class="accent-blue-500 w-5 h-5 ml-3 focus:ring-2 focus:ring-blue-400">
                         <span class="text-lg font-semibold text-white/90 select-none">GoldHEN</span>
@@ -161,15 +161,15 @@
                         </button>
                     </div>
                     <div id="DebugConsole"
-                        class="flex-grow min-h-[150px] bg-black/50 p-4 rounded-lg overflow-y-auto mb-4 text-xs font-mono"
+                        class="flex-grow min-h-0 min-h-[150px] bg-black/50 p-4 rounded-lg overflow-y-auto mb-4 text-xs font-mono"
                         dir="ltr">
                         <pre id='console'><center>--</center></pre>
                     </div>
                     <!-- HEN Selector -->
                     <div id="henSelection" class="flex items-center justify-center gap-4">
                         <label
-                            class="flex items-center px-2 py-1 rounded bg-gray-700/60 hover:bg-gray-700 cursor-pointer shadow border-2 border-transparent focus-within:border-blue-500">
-                            <input type="radio" name="hen2" value="GoldHEN" class="accent-blue-500 w-4 h-4 ml-2"
+                            class="flex items-center px-2 py-1 rounded bg-gray-700/60 hover:bg-gray-700 cursor-pointer shadow border-2 border-transparent focus-within:border-blue-500" id="goldhen-label-exploit">
+                            <input type="radio" name="hen" value="GoldHEN" class="accent-blue-500 w-4 h-4 ml-2"
                                 onchange="saveJbFlavor(this.name, this.value)">
                             <span class="text-base font-semibold text-white/90 select-none">GoldHEN</span>
                         </label>
@@ -382,7 +382,7 @@
                     <p id="fw10">10.xx</p>
                     <p id="fw11">11.xx</p>
                     <p id="fw12">12.xx</p>
-                    <p id="fw1300">13.00</p>
+                    <p id="fw13">13.xx</p>
                 </div>
             </div>
             <small id="goldhenFirmwareSemiSupported">
@@ -394,23 +394,25 @@
                 <p>sleirsgoevy</p>
                 <p>TheFlow</p>
                 <p>Flatz</p>
+                <p>Al Azif</p>
             </div>
             <div class="flex flex-wrap justify-evenly text-sm text-white/70 mt-2">
                 <p>Nathan Fargo</p>
-                <p>Al Azif</p>
                 <p>ufm42</p>
+                <p>Egycnq</p>
                 <p>Fire30</p>
             </div>
             <div class="flex flex-wrap justify-evenly text-sm text-white/70 mt-2">
-                <p>Egycnq</p>
                 <p>Jordy</p>
                 <p>Sonic-Iso</p>
                 <p>Feyzee61</p>
+                <p>Raw Game</p>
             </div>
             <div class="flex flex-wrap justify-evenly text-sm text-white/70 mt-2">
                 <p>ArabPixel</p>
                 <p>Dr.Yenyen</p>
                 <p>Teligin174</p>
+                <p>Payloads' devs</p>
             </div>
 
             <button onclick="aboutPopup()"
@@ -495,6 +497,10 @@
                         <input type="radio" name="exploitChain" value="6" onchange="exploitChain(this.value);">
                         <p id="slopKitNetCtrl">Slopkit Netctrl</p>
                     </label>
+                    <label class="flex items-center text-white/80" id="relapseExp">
+                        <input type="radio" name="exploitChain" value="7" onchange="exploitChain(this.value);">
+                        <p id="relapse">Slopkit Relapse</p>
+                    </label>
                 </div>
             </div>
             <div id="advancedPayloads" class="mb-6">
@@ -508,6 +514,10 @@
                 <label id="autoJbContainer" class="flex items-center text-white/80">
                     <input type="checkbox" id="autoJbRetry" onclick="setAutoJbRetry(this.checked)">
                     <p id="autoJbRetryText">Auto-Retry Jailbreak</p>
+                </label>
+                <label id="reloadAfterJb" class="flex items-center text-white/80">
+                    <input type="checkbox" id="reloadAfterJbInput" onclick="setReloadAfterJb(this.checked)">
+                    <p id="reloadAfterJbText">Reload After a successful Jailbreak</p>
                 </label>
                 <label id="bareboneJBOption" class="flex items-center text-white/80">
                     <input type="checkbox" id="bareboneJBInput" onclick="setBareboneJB(this.checked)">

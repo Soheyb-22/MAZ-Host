@@ -53,5 +53,14 @@ window.lang = {
     "autoJbRetryConfirm": "Jailbreak şimdi başlatılsın mı? Başarısız olursa jailbreak işlemi başarılı olana kadar otomatik olarak tekrar denenecektir.",
     "jailbreakCountDown": "{seconds} içinde tekrar denenecek...",
     "successRate": "Başarı Oranı: ",
-    "clearStatsConfirm": "Jailbreak istatistiklerini silmek istediğinizden emin misiniz? Bu işlem geri alınamaz!"
+    "clearStatsConfirm": "Jailbreak istatistiklerini silmek istediğinizden emin misiniz? Bu işlem geri alınamaz!",
+    "exploitChainTitle": "Exploit Zinciri",
+    "modularLapse": "PSFree Lapse modüler",
+    "bundleLapse": "PSFree Lapse paket",
+    "themeSettingsHeader": "Tema Ayarları",
+    "updateCache": "Önbelleği Güncelle",
+    "catppuccino": "Catppuccino",
+    "jailbreakSuccess": "Jailbreak başarılı!",
+    "alreadyJailbroken": "Zaten Jailbreak yapılmış ...",
+    "reloadAfterJbText": "Başarılı bir jailbreakten sonra sayfayı yeniden yükle"
 }

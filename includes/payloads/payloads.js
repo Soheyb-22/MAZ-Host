@@ -157,7 +157,8 @@ function load_RestoreDB(name) {
 }
 
 function load_DBRebuilder(name) {
-    Loadpayloadlocal("./includes/payloads/Bins/db-rebuilder-v0.1.bin", name);
+    needsGoldHEN = true;
+    Loadpayloadlocal("./includes/payloads/Bins/db-rebuilder-v0.1.1.bin", name);
 }
 
 function load_DisableASLR(name) {

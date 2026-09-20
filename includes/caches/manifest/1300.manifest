@@ -38,7 +38,6 @@ CACHE:
 ../../../includes/js/languages/en.js
 ../../../includes/payloads/payloads.js
 ../../../includes/payloads/Bins/WebRTE.bin
-../../../includes/payloads/Bins/appcache-install.bin
 ../../../includes/payloads/Bins/elfldr.bin
 ../../../includes/payloads/Bins/elfldr.elf
 ../../../includes/payloads/Bins/np-fake-signin-ps4.elf
@@ -56,7 +55,7 @@ CACHE:
 ../../../includes/payloads/Bins/ps4-permanent-uart.bin
 ../../../includes/payloads/Bins/ps4-pup-decrypt.bin
 ../../../includes/payloads/Bins/ps4-restore.bin
-../../../includes/payloads/Bins/db-rebuilder-v0.1.bin
+../../../includes/payloads/Bins/db-rebuilder-v0.1.1.bin
 ../../../includes/payloads/Bins/ps4-rif-renamer.bin
 ../../../includes/payloads/Bins/ps4-websrv.bin
 ../../../includes/payloads/Bins/ps4debug.bin

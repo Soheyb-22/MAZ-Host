@@ -23,7 +23,7 @@
 ### Core Exploit & Execution
 - **Auto-detection:** Automatically detects console type and firmware version.
 - **WebKit Exploits:** Entry point via the console's web browser using **PSFree**, **Bad Hoist**, **CSSFontFace** or **slopkit**.
-- **Kernel Exploits:** Escalates privileges to kernel level using **Lapse**, **Netctrl**, or **Sleirsgoevy's 6.7x**.
+- **Kernel Exploits:** Escalates privileges to kernel level using **Lapse**, **Netctrl**, **Relapse**, or **Sleirsgoevy's 6.7x**.
 - **Payload Loader:** After successful kernel exploitation, payloads or listens for incoming payloads on port `9020`.
 - **Barebone Jailbreak Experience option:** Executes the exploit in a minimal DOM footprint and automatically redirects back to the main page upon completion.
 - **Firmware-Based Caching:** Caches *only* what your specific firmware version requires instead of caching everything offline.
@@ -53,6 +53,7 @@ This table indicates firmware versions for which the *current version* of this r
 | **CSSFontFace** | Netctrl | 9.00 - 11.02 |
 | **Slopkit**     | Lapse  |  11.00 - 12.02 |
 | **Slopkit**     | Netctrl  |  12.50 - 13.00 |
+| **Slopkit**     | Relapse  |  13.02 - 13.52 |
 | **GoldHEN's PayLoader** | - | 5.05 - latest |
 
 ---
@@ -185,7 +186,7 @@ AGPL-3.0-or-later (see [LICENSE](LICENSE)). Part of this repo belongs to the gro
 - **Nathan Fargo and ufm42:** For CSSFontFace userland exploit.
 - **ufm42:** For CSSFontFace Netctrl and Lapse implementation.
 - **Feyzee61:** For the PSFree lapse bundle (single file) and 6.7x exploit implementations.
-- Raw Game: For implementing a PS4 port for the Slopkit Lapse and Netctrl.
+- **Raw Game**: For implementing a PS4 port for the Slopkit Lapse and Netctrl and also SlopKit Relapse.
 - **Dr.Yenyen:** For intensive multi-firmware testing.
 - **Nazky:** For being the first host I took a peek at.
 - **GattoDev:** For the WebKitty logo.

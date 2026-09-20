@@ -39,3 +39,15 @@ function autoJailbreakTimer() {
         timer--;
     }, 1000);
 }
+
+
+function setReloadAfterJb(checked) {
+    localStorage.setItem('reloadAfterJb', checked);
+}
+
+function getReloadAfterJb() {
+    const checked = (localStorage.getItem('reloadAfterJb') || 'true') === 'true'; // default to true if not set
+    const input = document.getElementById('reloadAfterJbInput');
+    if (input) input.checked = checked;
+    return checked;
+}

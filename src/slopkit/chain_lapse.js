@@ -4,6 +4,7 @@ import { int64 } from "./int64.js";
 import { offsetsFor } from "./ps4_offsets.js";
 
 const outEl = document.getElementById("console");
+const scrollEl = document.getElementById("DebugConsole") || outEl;
 const stateEl = document.getElementById("state");
 const lines = [];
 
@@ -51,7 +52,7 @@ function mark(tag, detail) {
                 : /OK|PROVEN|READY|pass|BASELINE/i.test(l) ? "ok" : "";
         return c ? '<span class="' + c + '">' + l + "</span>" : l;
     }).join("\n");
-    outEl.scrollTop = outEl.scrollHeight;
+    scrollEl.scrollTop = scrollEl.scrollHeight;
     post(tag, detail);
 }
 function state(t, c) { stateEl.textContent = t; stateEl.className = c || ""; }

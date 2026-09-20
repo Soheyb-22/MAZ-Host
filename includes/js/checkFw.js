@@ -8,6 +8,33 @@ function getPs4FwVersion(ua) {
     return match ? match[1] : "";
 }
 
+// Hide GoldHEN radio when its unsupported
+function updateHenFlavorVisibility(fwVersion) {
+    var fwNum = parseFloat(fwVersion);
+    var hideGoldHEN = fwNum > 13.00 ? true : false;
+    if (isNaN(fwNum)) return;
+
+    const goldHenInputInitial = document.getElementById('goldhen-label-initial');
+    const goldHenInputExploit = document.getElementById('goldhen-label-exploit');
+    const goldHenVersionSelector = document.getElementById('chooseGoldHEN');
+
+    if (hideGoldHEN) {
+        if (goldHenInputInitial && goldHenInputExploit && goldHenVersionSelector){
+            goldHenInputInitial.classList.toggle('hidden', hideGoldHEN);
+            goldHenInputExploit.classList.toggle('hidden', hideGoldHEN);
+            goldHenVersionSelector.classList.toggle('hidden', hideGoldHEN);
+        }
+        var henInputs = document.querySelectorAll(
+            'input[name="hen"][value="HEN"], input[name="hen2"][value="HEN"]'
+        );
+        henInputs.forEach(function (input) {
+            input.checked = true;
+        });
+        user.currentJbFlavor = 'HEN';
+        localStorage.setItem('jailbreakFlavor', 'HEN');
+    }
+}
+
 function CheckFW() {
     var userAgent = navigator.userAgent;
     var ps4Regex = /PlayStation 4/;
@@ -25,6 +52,7 @@ function CheckFW() {
         user.ps4Fw = fwVersion;
 
         var fwNum = parseFloat(fwVersion);
+        updateHenFlavorVisibility(fwVersion);
         if (fwNum >= webKitMin && fwNum <= webKitMax) {
             ui.ps4FwStatus.style.color = 'green';
 
@@ -33,9 +61,6 @@ function CheckFW() {
             var major = dotIndex !== -1 ? fwVersion.substring(0, dotIndex) : fwVersion;
             var fwElement = "fw" + major;
 
-            if (fwElement == "fw13") {
-                fwElement = "fw1300";
-            }
             var el = document.getElementById(fwElement);
             if (el) el.classList.add('fwSelected');
 
@@ -146,7 +171,9 @@ function firstTimeExploitChain(fwVersion) {
         chain = 1; // Bundle PSFree Lapse
     } else if (fwNum >= 11.50 && fwNum <= 12.02) {
         chain = 5; // SlopKit lapse
-    } else if (fwNum >= 12.50 && fwNum <= webKitMax) {
+    } else if (fwNum >= 13.02 && fwNum <= 13.52) {
+        chain = 7; // Relapse
+    } else if (fwNum >= 12.50 && fwNum < 13.02) {
         chain = 6; // SlopKit Netctrl
     }
     exploitChain(chain);
@@ -184,7 +211,10 @@ function updateExploitChainVisibility(fwVersion) {
     toggleVisibility('bundleLapseExp', showPsfreeLapse);
 
     var showSlopKitLapse = (fwNum >= 11.00 && fwNum <= 12.02);
-    var showSlopKitNetCtrl = (fwNum >= 12.50 && fwNum <= webKitMax);
+    var showSlopKitNetCtrl = (fwNum >= 12.50 && fwNum <= 13.00);
     toggleVisibility('slopKitLapseExp', showSlopKitLapse);
     toggleVisibility('slopKitNetCtrlExp', showSlopKitNetCtrl);
+
+    var showRelapse = (fwNum >= 13.02 && fwNum <= 13.52);
+    toggleVisibility('relapseExp', showRelapse);
 }

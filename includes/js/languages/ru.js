@@ -64,4 +64,7 @@ window.lang = {
     "themeSettingsHeader": "Кастомизация",
     "updateCache": "Обновить оффлайн кэш",
     "catppuccino": "Коттопучино",
+    "jailbreakSuccess": "Взлом успешен!",
+    "alreadyJailbroken": "Уже взломан ...",
+    "reloadAfterJbText": "Перезагрузить после успешного взлома"
 }
