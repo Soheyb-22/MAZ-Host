@@ -85,12 +85,11 @@ CACHE:
 ../../../src/relapse/patches/1302.bin
 ../../../src/relapse/patches/1350.bin
 ../../../src/relapse/patches/1352.bin
-
-NETWORK:
-*
 ../../../includes/maz/maz-ui.css
 ../../../includes/maz/maz-ui.js
 ../../../includes/maz/maz-logo.svg
 ../../../includes/maz/maz-bg.svg
 ../../../includes/maz/mohamed.jpeg
 ../../../includes/maz/maz-favicon.svg
+NETWORK:
+*
