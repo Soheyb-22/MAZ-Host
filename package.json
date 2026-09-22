@@ -1,7 +1,7 @@
 {
-  "name": "WebKitty",
+  "name": "maz-host",
   "version": "1.5.1",
-  "description": "A web interface to jailbreak your PS4",
+  "description": "MAZ PS4 exploit and GoldHEN host",
   "main": "index.html",
   "scripts": {
     "build": "babel includes/js/index.js --out-file includes/js/index-legacy.js --presets=@babel/preset-env",

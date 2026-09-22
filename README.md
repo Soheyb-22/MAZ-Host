@@ -1,6 +1,8 @@
 <div align="center">
 
-# WebKitty
+# MAZ Host
+
+> MAZ Host is a customized interface built on WebKitty. Original WebKitty project credit and license remain with its upstream authors.
 
 <img src="includes/assets/icons/webkitty.svg" width="220" alt="WebKitty Logo">
 

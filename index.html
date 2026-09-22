@@ -4,34 +4,31 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
-    <title>WebKitty</title>
-    <meta name="description" content="WebKitty is a user-friendly, feature-rich PS4 exploit host for 6.70 - 13.00." />
-    <meta name="author" content="ArabPixel">
-    <meta name="keywords"
-        content="PS4, PlayStation 4, webkit exploit, jailbreak, psfree lapse, cssfontface, WebKitty, PSFree Enhanced">
+    <title>MAZ Host</title>
+    <meta name="description" content="MAZ Host — PS4 exploit and GoldHEN host.">
+    <meta name="author" content="MAZ">
+    <meta name="keywords" content="PS4, PlayStation 4, GoldHEN, jailbreak, exploit, homebrew, MAZ Host">
 
 
     <!-- Facebook / Discord / WhatsApp -->
     <meta property="og:type" content="website">
-    <meta property="og:title" content="WebKitty">
-    <meta property="og:description"
-        content="WebKitty is a user-friendly, feature-rich PS4 exploit host for 6.70 - 13.52.">
-    <meta property="og:image" content="http://webkitty.arabpixel.net/includes/assets/icons/webkitty.svg">
-    <meta property="og:url" content="http://webkitty.arabpixel.net">
+    <meta property="og:title" content="MAZ Host">
+    <meta property="og:description" content="MAZ Host — PS4 exploit and GoldHEN host.">
+    <meta property="og:image" content="./includes/maz/maz-favicon.svg">
+    <meta property="og:url" content="">
 
     <!-- Twitter / X -->
     <meta name="twitter:card" content="summary">
-    <meta name="twitter:title" content="WebKitty">
-    <meta name="twitter:description"
-        content="WebKitty is a user-friendly, feature-rich PS4 exploit host for 6.70 - 13.52.">
-    <meta name="twitter:image" content="http://webkitty.arabpixel.net/includes/assets/icons/webkitty.svg">
-    <link rel="icon" href="includes/assets/icons/favicon.ico" type="image/x-icon">
+    <meta name="twitter:title" content="MAZ Host">
+    <meta name="twitter:description" content="MAZ Host — PS4 exploit and GoldHEN host.">
+    <meta name="twitter:image" content="./includes/maz/maz-favicon.svg">
+    <link rel="icon" href="./includes/maz/maz-favicon.svg" type="image/svg+xml">
     <link rel="stylesheet" id="main-stylesheet" href="">
     <link rel="stylesheet" id="color-stylesheet" href="">
     <script>
         // Immediately redirect PS4 from HTTPS to HTTP before loading DOM or scripts
         if (window.location.protocol === 'https:' &&
-            window.location.hostname === 'webkitty.arabpixel.net' &&
+            window.location.hostname === 'maz-host.invalid' &&
             navigator.userAgent.indexOf('PlayStation 4') !== -1) {
             window.abortLoading = true;
             window.location.replace(window.location.href.replace(/^https:/, 'http:'));
@@ -47,6 +44,8 @@
             document.getElementById('color-stylesheet').setAttribute('href', './includes/css/colors/' + savedColor + '.css');
         }
     </script>
+    <link rel="stylesheet" href="./includes/maz/maz-ui.css">
+    <link rel="shortcut icon" href="./includes/maz/maz-favicon.svg" type="image/svg+xml">
 </head>
 
 <body class="bg-gray-900 text-white">
@@ -732,6 +731,7 @@
     <script src="./includes/js/events.js"></script>
     <script src="./includes/js/payloadsHandler.js"></script>
     <script src="./includes/js/utilities.js"></script>
+    <script src="./includes/maz/maz-ui.js"></script>
 </body>
 
 </html>
