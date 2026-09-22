@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" preserveAspectRatio="xMidYMid slice">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#01050c"/>
+      <stop offset=".5" stop-color="#06172a"/>
+      <stop offset="1" stop-color="#01040a"/>
+    </linearGradient>
+    <radialGradient id="halo" cx=".55" cy=".22" r=".5">
+      <stop offset="0" stop-color="#0a5fa5" stop-opacity=".44"/>
+      <stop offset="1" stop-color="#08111d" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="1920" height="1080" fill="url(#bg)"/>
+  <rect width="1920" height="1080" fill="url(#halo)"/>
+
+  <!-- Abstract console / controller silhouettes -->
+  <g opacity=".72">
+    <path d="M0 370 L285 260 L360 310 L360 825 L0 825 Z" fill="#02050a" stroke="#092c4c" stroke-width="3"/>
+    <path d="M0 516 L360 516" stroke="#037fff" stroke-width="7"/>
+    <path d="M104 720 C142 638 231 620 304 662 C365 697 381 766 348 821 C313 875 238 889 183 846 C136 812 80 776 104 720 Z"
+      fill="#02050a" stroke="#0a3f70" stroke-width="4"/>
+    <circle cx="155" cy="721" r="35" fill="#071525" stroke="#0f7ed5" stroke-width="4"/>
+    <circle cx="275" cy="722" r="35" fill="#071525" stroke="#0f7ed5" stroke-width="4"/>
+    <path d="M185 820 C225 839 263 837 302 813" stroke="#087aff" stroke-width="8" fill="none"/>
+  </g>
+
+  <!-- Mountains -->
+  <g opacity=".62">
+    <path d="M1180 684 L1365 395 L1435 493 L1530 327 L1634 455 L1710 376 L1920 605 L1920 840 L1120 840 Z"
+      fill="#020912" stroke="#074a7d" stroke-width="4"/>
+    <path d="M1365 395 L1435 493 L1530 327 L1634 455 L1710 376"
+      fill="none" stroke="#0d8fe5" stroke-width="5"/>
+  </g>
+
+  <!-- PlayStation-like geometric symbols -->
+  <g opacity=".20" stroke="#1689dd" stroke-width="8" fill="none">
+    <path d="M1765 410 L1800 350 L1835 410 Z"/>
+    <circle cx="1800" cy="505" r="36"/>
+    <path d="M1768 585 L1832 649 M1832 585 L1768 649"/>
+    <rect x="1766" y="705" width="68" height="68"/>
+  </g>
+
+  <path d="M0 925 C450 840 780 1040 1190 918 C1480 832 1680 885 1920 822"
+        fill="none" stroke="#076eae" stroke-width="3" opacity=".20"/>
+</svg>
