@@ -29,7 +29,7 @@ var devMode = false; // Dev mode for PC debugging
 var rtlLangs = ["ar", "fa"];
 var webKitMin = 6.70;
 var webKitMax = 13.52;
-var projectName = "WebKitty";
+var projectName = "MAZ Host";
 var ui = {
   mainContainer: document.querySelector('.mainContainer'),
   // Sections

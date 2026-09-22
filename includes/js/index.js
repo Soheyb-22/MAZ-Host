@@ -20,7 +20,7 @@ var rtlLangs = ["ar", "fa"];
 
 const webKitMin = 6.70;
 const webKitMax = 13.52;
-const projectName = "WebKitty";
+const projectName = "MAZ Host";
 
 const ui = {
   mainContainer: document.querySelector('.mainContainer'),
