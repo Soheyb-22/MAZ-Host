@@ -196,13 +196,10 @@
 
   function makePsIcon() {
   return '' +
-    '<svg viewBox="0 0 64 64" aria-hidden="true">' +
-      '<g fill="currentColor">' +
-        '<path d="M18 52V13c0-2 1.8-3.5 3.8-3l13.5 3.4C43 15.3 48 19.4 48 25c0 5.2-3.5 9-9.7 11l-7.3 2.2v-7.4l5.4-1.5c3.2-.9 4.5-2.2 4.5-4.1 0-2.3-2.3-4-6.2-5l-8.8-2.2v36z"/>' +
-        '<path d="M11 42.5c7.5 3.2 15.5 3.8 24.2 1.6l10.8-2.8c4.3-1.1 7-.4 7 1.6 0 2.2-3.2 4.3-8.2 5.7l-13.7 3.7C23 54.5 15.6 53.7 11 50.6z"/>' +
-        '<path d="M31 38.5l7.7-2.2c4.2-1.2 7.8-1.4 10-.3 1.5.7 1.8 1.8.7 2.7-1.1.9-3.3 1.8-6.5 2.6L31 44.4z" opacity=".75"/>' +
-      '</g>' +
-    '</svg>';
+    '<div class="maz-ps-mark">' +
+      '<span class="maz-ps-p">P</span>' +
+      '<span class="maz-ps-s">S</span>' +
+    '</div>';
   }
 
   function makeSuccessOverlay() {
