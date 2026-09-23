@@ -575,9 +575,9 @@ html, body {
 }
 .maz-ps-side {
   position: absolute;
-  top: 98px;
-  width: 74px;
-  height: 74px;
+  top: 94px;
+  width: 84px;
+  height: 84px;
   opacity: 1;
   color: #78ff9e;
   filter:
@@ -585,8 +585,8 @@ html, body {
     drop-shadow(0 0 16px rgba(80,255,145,.55));
 }
 
-.maz-ps-left { left: 30px; }
-.maz-ps-right { right: 30px; }
+.maz-ps-left { left: 24px; }
+.maz-ps-right { right: 24px; }
 
 .maz-ps-buttons {
   width: 100%;
@@ -610,26 +610,26 @@ html, body {
   top: 0px;
   left: 50%;
   transform: translateX(-50%);
-  font-size: 22px;
+  font-size: 26px;
 }
 
 .maz-square {
   left: 4px;
   top: 24px;
-  font-size: 19px;
+  font-size: 23px;
 }
 
 .maz-circle {
   right: 4px;
   top: 24px;
-  font-size: 20px;
+  font-size: 24px;
 }
 
 .maz-cross {
   bottom: 0px;
   left: 50%;
   transform: translateX(-50%);
-  font-size: 22px;
+  font-size: 26px;
 }
 
 .maz-ps-left { left: 30px; }
