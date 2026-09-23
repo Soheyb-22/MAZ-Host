@@ -592,19 +592,19 @@ html, body {
 
 .maz-ps-p {
   position: absolute;
-  font-size: 42px;
-  left: 7px;
-  top: 4px;
+  font-size: 46px;
+  left: 9px;
+  top: 2px;
   line-height: 1;
 }
 
 .maz-ps-s {
   position: absolute;
-  font-size: 34px;
-  right: 5px;
-  bottom: 5px;
+  font-size: 36px;
+  left: 27px;
+  top: 23px;
   line-height: 1;
-  transform: skewX(-12deg);
+  transform: skewX(-15deg);
 }
 
 .maz-ps-left { left: 30px; }
