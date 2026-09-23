@@ -196,11 +196,13 @@
 
   function makePsIcon() {
   return '' +
-    '<div class="maz-ps-mark">' +
-      '<span class="maz-ps-p">P</span>' +
-      '<span class="maz-ps-s">S</span>' +
+    '<div class="maz-ps-buttons" aria-hidden="true">' +
+      '<span class="maz-btn maz-triangle">△</span>' +
+      '<span class="maz-btn maz-circle">○</span>' +
+      '<span class="maz-btn maz-cross">×</span>' +
+      '<span class="maz-btn maz-square">□</span>' +
     '</div>';
-  }
+}
 
   function makeSuccessOverlay() {
     if (byId("maz-success")) return;
