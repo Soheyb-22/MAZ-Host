@@ -1,0 +1,237 @@
+name: Apply MAZ Relapse debug once
+
+on:
+  push:
+    paths:
+      - '.github/workflows/apply-maz-debug-once.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  patch:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Patch MAZ debug and cache versions
+        shell: bash
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+
+          # 1) Add a low-overhead Relapse stage observer to the MAZ UI.
+          p = Path('includes/maz/maz-ui.js')
+          s = p.read_text(encoding='utf-8')
+
+          marker = '  function makePsIcon() {'
+          debug_block = r'''  var relapseDebugObserver = null;
+          var relapseDebugTimer = null;
+          var relapseLastStage = "";
+
+          function getRelapseLastLine() {
+            var out = byId("console");
+            if (!out) return "";
+
+            var text = String(out.textContent || "");
+            var parts = text.split(/\r?\n/);
+            for (var i = parts.length - 1; i >= 0; i--) {
+              var line = String(parts[i] || "").replace(/^\s+|\s+$/g, "");
+              if (line) return line;
+            }
+            return "";
+          }
+
+          function updateRelapseDebug() {
+            if (!running || succeeded) return;
+
+            var last = getRelapseLastLine();
+            if (!last || last === relapseLastStage) return;
+            relapseLastStage = last;
+
+            try {
+              localStorage.setItem("mazLastRelapseStage", last);
+            } catch (e) {}
+
+            var fail = /FAIL|ERROR|THREW|TIMEOUT|ABORTED|MISMATCH|MISS|LOST|POISON|REBOOT/i.test(last);
+            var tag = last;
+            var sep = last.indexOf("  ");
+            if (sep > 0) tag = last.substring(0, sep);
+            if (tag.length > 32) tag = tag.substring(0, 32);
+
+            if (fail) {
+              running = false;
+              setStatus("Relapse stopped: " + tag, last, "failed");
+              stopRelapseDebug();
+              return;
+            }
+
+            setStatus("Relapse: " + tag, last, "running");
+          }
+
+          function stopRelapseDebug() {
+            if (relapseDebugObserver) {
+              try { relapseDebugObserver.disconnect(); } catch (e) {}
+              relapseDebugObserver = null;
+            }
+            if (relapseDebugTimer) {
+              window.clearInterval(relapseDebugTimer);
+              relapseDebugTimer = null;
+            }
+          }
+
+          function startRelapseDebug() {
+            stopRelapseDebug();
+            relapseLastStage = "";
+
+            try {
+              localStorage.removeItem("mazLastRelapseStage");
+            } catch (e) {}
+
+            var out = byId("console");
+            if (!out) return;
+
+            if (typeof MutationObserver !== "undefined") {
+              relapseDebugObserver = new MutationObserver(function () {
+                updateRelapseDebug();
+              });
+              relapseDebugObserver.observe(out, {
+                childList: true,
+                subtree: true,
+                characterData: true
+              });
+            } else {
+              relapseDebugTimer = window.setInterval(updateRelapseDebug, 250);
+            }
+
+            updateRelapseDebug();
+          }
+
+          window.mazLastRelapseStage = function () {
+            try {
+              return localStorage.getItem("mazLastRelapseStage") || relapseLastStage || "";
+            } catch (e) {
+              return relapseLastStage || "";
+            }
+          };
+
+'''
+
+          if 'function startRelapseDebug()' not in s:
+              if marker not in s:
+                  raise SystemExit('maz-ui.js marker not found')
+              s = s.replace(marker, debug_block + marker, 1)
+
+          old = '''  function resetStatus() {
+            running = false;
+            succeeded = false;
+'''
+          new = '''  function resetStatus() {
+            running = false;
+            succeeded = false;
+            stopRelapseDebug();
+'''
+          if 'stopRelapseDebug();\n\n    var launch' not in s:
+              if old not in s:
+                  raise SystemExit('resetStatus anchor not found')
+              s = s.replace(old, new, 1)
+
+          old = '''    var wrapped = function () {
+              succeeded = true;
+              running = false;
+              setStatus("GoldHEN Loaded Successfully!", "System ready.", "success");
+'''
+          new = '''    var wrapped = function () {
+              succeeded = true;
+              running = false;
+              stopRelapseDebug();
+              setStatus("GoldHEN Loaded Successfully!", "System ready.", "success");
+'''
+          if 'running = false;\n      stopRelapseDebug();\n      setStatus("GoldHEN Loaded Successfully!"' not in s:
+              if old not in s:
+                  raise SystemExit('success hook anchor not found')
+              s = s.replace(old, new, 1)
+
+          old = '''    succeeded = false;
+            running = true;
+            setStatus("Initializing exploit...", "Starting WebKitty exploit chain.", "running");
+'''
+          new = '''    succeeded = false;
+            running = true;
+            startRelapseDebug();
+            setStatus("Initializing exploit...", "Starting WebKitty exploit chain.", "running");
+'''
+          if 'running = true;\n    startRelapseDebug();' not in s:
+              if old not in s:
+                  raise SystemExit('runRealJailbreak anchor not found')
+              s = s.replace(old, new, 1)
+
+          old = '''    } catch (e) {
+              running = false;
+              setStatus("Jailbreak Failed", "Could not start the real WebKitty action.", "failed");
+'''
+          new = '''    } catch (e) {
+              running = false;
+              stopRelapseDebug();
+              setStatus("Jailbreak Failed", "Could not start the real WebKitty action.", "failed");
+'''
+          if 'running = false;\n      stopRelapseDebug();\n      setStatus("Jailbreak Failed"' not in s:
+              if old not in s:
+                  raise SystemExit('runRealJailbreak catch anchor not found')
+              s = s.replace(old, new, 1)
+
+          p.write_text(s, encoding='utf-8')
+
+          # 2) Force the current Relapse module URL on both modern and legacy main logic.
+          for filename in ['includes/js/index.js', 'includes/js/index-legacy.js']:
+              q = Path(filename)
+              t = q.read_text(encoding='utf-8')
+              t = t.replace('src/relapse/jb.js?v=10', 'src/relapse/jb.js?v=12')
+              t = t.replace('src/relapse/jb.js?v=11', 'src/relapse/jb.js?v=12')
+              q.write_text(t, encoding='utf-8')
+
+          # 3) Keep barebone exploit.html on the same module version.
+          q = Path('exploit.html')
+          t = q.read_text(encoding='utf-8')
+          t = t.replace('src/relapse/jb.js?v=10', 'src/relapse/jb.js?v=12')
+          t = t.replace('src/relapse/jb.js?v=11', 'src/relapse/jb.js?v=12')
+          q.write_text(t, encoding='utf-8')
+
+          # 4) Bump AppCache manifest so PS4 cannot keep the previous UI/module URLs.
+          q = Path('includes/caches/manifest/1302-1352.manifest')
+          t = q.read_text(encoding='utf-8')
+          t = t.replace('# v2.2 MAZ path fix', '# v2.3 MAZ relapse debug')
+          t = t.replace('../../../src/relapse/jb.js?v=10', '../../../src/relapse/jb.js?v=12')
+          t = t.replace('../../../src/relapse/jb.js?v=11', '../../../src/relapse/jb.js?v=12')
+          if '../../../includes/js/index-legacy.js' not in t:
+              t = t.replace('../../../includes/js/index.js\n', '../../../includes/js/index.js\n../../../includes/js/index-legacy.js\n', 1)
+          q.write_text(t, encoding='utf-8')
+          PY
+
+      - name: Validate targeted changes
+        shell: bash
+        run: |
+          set -e
+          grep -q 'function startRelapseDebug()' includes/maz/maz-ui.js
+          grep -q 'mazLastRelapseStage' includes/maz/maz-ui.js
+          grep -q 'src/relapse/jb.js?v=12' includes/js/index.js
+          grep -q 'src/relapse/jb.js?v=12' exploit.html
+          grep -q 'v2.3 MAZ relapse debug' includes/caches/manifest/1302-1352.manifest
+          grep -q '../../../src/relapse/jb.js?v=12' includes/caches/manifest/1302-1352.manifest
+
+      - name: Commit changes and remove one-shot workflow
+        shell: bash
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          rm -f .github/workflows/apply-maz-debug-once.yml
+          git add -A
+          if git diff --cached --quiet; then
+            echo 'No changes to commit.'
+            exit 0
+          fi
+          git commit -m 'Add MAZ Relapse stage debug'
+          git push origin HEAD:main
