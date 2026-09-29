@@ -1,5 +1,5 @@
 CACHE MANIFEST
-# v2.2 MAZ path fix
+# v2.3 MAZ relapse debug
 # Generated on 2026-09-29
 
 CACHE:
@@ -28,6 +28,7 @@ CACHE:
 ../../../includes/js/utilities.js
 ../../../includes/js/checkFw.js
 ../../../includes/js/index.js
+../../../includes/js/index-legacy.js
 ../../../includes/js/language.js
 ../../../includes/js/languages/es.js
 ../../../includes/js/languages/fa.js
@@ -81,7 +82,7 @@ CACHE:
 ../../../src/relapse/ps4_offsets.js
 ../../../src/relapse/rpc_worker.js
 ../../../src/relapse/jb.js
-../../../src/relapse/jb.js?v=11
+../../../src/relapse/jb.js?v=12
 ../../../src/relapse/patches/1302.bin
 ../../../src/relapse/patches/1350.bin
 ../../../src/relapse/patches/1352.bin

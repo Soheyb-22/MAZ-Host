@@ -118,6 +118,7 @@
   function resetStatus() {
     running = false;
     succeeded = false;
+    stopRelapseDebug();
 
     var launch = byId("maz-launch");
     var box = byId("maz-run-state");
@@ -193,6 +194,96 @@
     window.log = wrapped;
     return true;
   }
+
+  var relapseDebugObserver = null;
+  var relapseDebugTimer = null;
+  var relapseLastStage = "";
+
+  function getRelapseLastLine() {
+    var out = byId("console");
+    if (!out) return "";
+
+    var text = String(out.textContent || "");
+    var parts = text.split(/\r?\n/);
+    for (var i = parts.length - 1; i >= 0; i--) {
+      var line = String(parts[i] || "").replace(/^\s+|\s+$/g, "");
+      if (line) return line;
+    }
+    return "";
+  }
+
+  function updateRelapseDebug() {
+    if (!running || succeeded) return;
+
+    var last = getRelapseLastLine();
+    if (!last || last === relapseLastStage) return;
+    relapseLastStage = last;
+
+    try {
+      localStorage.setItem("mazLastRelapseStage", last);
+    } catch (e) {}
+
+    var fail = /FAIL|ERROR|THREW|TIMEOUT|ABORTED|MISMATCH|MISS|LOST|POISON|REBOOT/i.test(last);
+    var tag = last;
+    var sep = last.indexOf("  ");
+    if (sep > 0) tag = last.substring(0, sep);
+    if (tag.length > 32) tag = tag.substring(0, 32);
+
+    if (fail) {
+      running = false;
+      setStatus("Relapse stopped: " + tag, last, "failed");
+      stopRelapseDebug();
+      return;
+    }
+
+    setStatus("Relapse: " + tag, last, "running");
+  }
+
+  function stopRelapseDebug() {
+    if (relapseDebugObserver) {
+      try { relapseDebugObserver.disconnect(); } catch (e) {}
+      relapseDebugObserver = null;
+    }
+    if (relapseDebugTimer) {
+      window.clearInterval(relapseDebugTimer);
+      relapseDebugTimer = null;
+    }
+  }
+
+  function startRelapseDebug() {
+    stopRelapseDebug();
+    relapseLastStage = "";
+
+    try {
+      localStorage.removeItem("mazLastRelapseStage");
+    } catch (e) {}
+
+    var out = byId("console");
+    if (!out) return;
+
+    if (typeof MutationObserver !== "undefined") {
+      relapseDebugObserver = new MutationObserver(function () {
+        updateRelapseDebug();
+      });
+      relapseDebugObserver.observe(out, {
+        childList: true,
+        subtree: true,
+        characterData: true
+      });
+    } else {
+      relapseDebugTimer = window.setInterval(updateRelapseDebug, 250);
+    }
+
+    updateRelapseDebug();
+  }
+
+  window.mazLastRelapseStage = function () {
+    try {
+      return localStorage.getItem("mazLastRelapseStage") || relapseLastStage || "";
+    } catch (e) {
+      return relapseLastStage || "";
+    }
+  };
 
   function makePsIcon() {
   return '' +
@@ -273,6 +364,7 @@
     var wrapped = function () {
       succeeded = true;
       running = false;
+      stopRelapseDebug();
       setStatus("GoldHEN Loaded Successfully!", "System ready.", "success");
       showSuccess();
       return originalSuccess.apply(this, arguments);
@@ -288,6 +380,7 @@
 
     succeeded = false;
     running = true;
+    startRelapseDebug();
     setStatus("Initializing exploit...", "Starting WebKitty exploit chain.", "running");
 
     /* Important:
@@ -298,6 +391,7 @@
       realRun.click();
     } catch (e) {
       running = false;
+      stopRelapseDebug();
       setStatus("Jailbreak Failed", "Could not start the real WebKitty action.", "failed");
     }
   }
